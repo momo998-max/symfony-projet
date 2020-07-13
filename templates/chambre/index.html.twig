@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChambreController!{% endblock %}
+
+{% block body %}
+<div class="row">
+<table class="table table-hover table-info">
+  <thead>
+    <tr>
+      <th scope="col">Numero de chambre</th>
+      <th scope="col">Type de chambre</th>
+      <th scope="col">Batiment</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for chambre in chambres  %}
+            <tr>
+            <th scope="row">{{chambre.id}}</th>
+                <td>{{chambre.TypeChambre}} </>
+                <td>{{chambre.Batiment.NomBatiment}}</td>
+                <td><a href="/chambre/update/{{chambre.id}}" class="btn btn-warning">Modifier</a></td>
+                <td><a href="/chambre/delete/{{chambre.id}}" class="btn btn-danger">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        
+    <tbody>
+ </table>
+{{knp_pagination_render(chambres)}}
+ </div>
+{% endblock %}

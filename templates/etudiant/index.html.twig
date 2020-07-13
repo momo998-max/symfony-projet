@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EtudiantController!{% endblock %}
+
+{% block body %}
+<div class="row">
+<div class="col-12" style="overflow-y:scroll;height:400px;">
+<table class="table table-hover table-info" style="overflow-y:scroll" >
+  <thead>
+    <tr>
+      <th scope="col">Matricule</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Mail</th>
+      <th scope="col">TEL</th>
+      <th scope="col">Date</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+   
+  {% for etudiant in etudiants  %}
+            <tr>
+            <th scope="row">{{etudiant.MatriculeEtudiant}}</th>
+                <td>{{etudiant.PrenomEtudiant}}</td>
+                <td>{{etudiant.NomEtudiant}} </td>
+                <td>{{etudiant.MailEtudiant}} </td>
+                <td>{{etudiant.TelEtudiant}}</td>
+                <td>{{etudiant.NaissanceEtudiant|date('d/m/Y')}}</td>
+                <td><a href="/etudiant/update/{{etudiant.id}}" class="btn btn-warning">Modifier</a></td>
+                <td><a href="/etudiant/delete/{{etudiant.id}}" class="btn btn-danger">Supprimer</a></td>
+                
+            </tr>
+        {% endfor %}
+    <tbody>
+ </table>
+  </div>
+{% endblock %}
